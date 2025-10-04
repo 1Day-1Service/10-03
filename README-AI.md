@@ -49,7 +49,7 @@ HUGGINGFACE_API_TOKEN=your_token_here
 2025-10-03-daily-tarot/
 ├── lib/
 │   └── ai/
-│       └── huggingface-client.ts    # AI 클라이언트
+│       └── gemini-client.ts         # Google Gemini AI 클라이언트
 ├── app/
 │   ├── api/
 │   │   └── generate-reading/

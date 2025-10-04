@@ -140,7 +140,7 @@ http://localhost:3001
 │   └── ui/                       # Shadcn UI 컴포넌트
 ├── lib/
 │   ├── ai/
-│   │   └── huggingface-client.ts # Google AI 클라이언트
+│   │   └── gemini-client.ts      # Google Gemini AI 클라이언트
 │   ├── tarot-data.ts             # 22장 메이저 아르카나 데이터
 │   ├── tarot-engine.ts           # 3카드 스프레드 로직
 │   ├── daily-check.ts            # 저장 & 로드 관리

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { generatePersonalizedReading, TarotAIPrompt } from '@/lib/ai/huggingface-client';
+import { generatePersonalizedReading, TarotAIPrompt } from '@/lib/ai/gemini-client';
 
 export async function POST(request: NextRequest) {
   try {
