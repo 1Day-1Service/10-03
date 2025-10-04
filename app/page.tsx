@@ -106,6 +106,7 @@ export default function Home() {
     setReading(null);
     setIsFlipped(false);
     setHasDrawn(false);
+    setIsLoading(false);
     setIsGeneratingAI(false);
     setAiError(null);
     setShowResetConfirm(false);
