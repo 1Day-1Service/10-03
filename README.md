@@ -1,43 +1,43 @@
-# 🔮 오늘의 타로 운세 (Daily Tarot Reading)
+# 🔮 AI 타로 운세 (AI Tarot Reading)
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.2.15-black?logo=next.js)](https://nextjs.org/)
 [![React](https://img.shields.io/badge/React-18.3-blue?logo=react)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?logo=tailwind-css)](https://tailwindcss.com/)
-[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-AI-yellow)](https://huggingface.co/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-2.0%20Flash-4285F4?logo=google)](https://ai.google.dev/)
 
-**1일 1서비스 프로젝트 #3** - AI가 해석해주는 매일 새로운 타로 운세 서비스
+**1일 1서비스 프로젝트 #3** - Google Gemini AI가 해석해주는 3카드 타로 운세 서비스
 
-매일 하나의 타로 카드를 뽑아 AI가 개인화된 해석을 제공합니다. 하루를 긍정적으로 시작할 수 있는 메시지와 조언을 받아보세요! ✨
+카테고리를 선택하고 3장의 카드(과거-현재-미래)를 뽑아 AI의 맞춤형 해석을 받아보세요! ✨
 
 ## 🎯 주요 기능
 
 ### ⭐ 핵심 기능
-- 🎴 **일일 타로 카드**: 매일 하나의 랜덤 타로 카드 뽑기
-- 🤖 **AI 개인화 해석**: Hugging Face AI (Meta Llama 3.2 3B)가 작성하는 맞춤형 해석
-- 🔄 **카드 다시 뽑기**: 언제든지 새로운 카드로 다시 뽑기 가능
-- 💾 **일일 저장**: 하루 동안 뽑은 카드와 해석 보관 (자정 초기화)
+- 🎴 **3카드 스프레드**: 과거-현재-미래 타로 카드 리딩
+- 🎯 **6가지 카테고리**: 연애운, 재물운, 건강운, 직업운, 대인관계운, 종합운
+- 🤖 **AI 맞춤 해석**: Google Gemini 2.0 Flash가 선택한 카테고리에 특화된 해석 제공
+- 🔄 **무제한 다시 뽑기**: 원하는 만큼 카드를 다시 뽑을 수 있음
+- 💾 **자동 저장**: 마지막 결과가 저장되어 새로고침해도 유지
 - 📱 **반응형 디자인**: 모바일, 태블릿, 데스크톱 모두 지원
 
 ### 🎨 UI/UX
-- ✨ **3D 카드 플립 애니메이션**: Framer Motion을 활용한 부드러운 카드 뒤집기
+- ✨ **카테고리 선택**: 아이콘과 그라데이션으로 구분된 6가지 운세
+- 🎭 **3D 카드 애니메이션**: Framer Motion을 활용한 순차적 카드 공개
 - 🌙 **신비로운 다크 테마**: 보라색 그라데이션과 별빛 배경
-- 🎭 **22장의 메이저 아르카나**: 각 카드별 고유한 이모지 아이콘
+- 🎴 **22장 메이저 아르카나**: 각 카드별 고유한 이모지 아이콘
 - 📊 **정/역방향 표시**: 카드의 방향에 따른 다른 해석
-- 🎨 **행운의 색상 & 숫자**: 각 카드별 행운의 요소 표시
 
-### 🧠 AI 기능
-- **실시간 해석 생성**: 카드를 뽑은 후 AI가 실시간으로 개인화된 메시지 작성
-- **자연스러운 한국어**: 따뜻하고 친근한 톤의 AI 해석
-- **로딩 애니메이션**: AI 생성 중 상태 표시
-- **에러 처리**: AI 실패 시 기본 해석으로 자동 폴백
+### 🧠 AI 기능 (Google Gemini 2.0 Flash)
+- **카테고리 특화 해석**: 선택한 운세(연애, 재물 등)에만 집중된 분석
+- **종합 메시지**: 3장 카드의 전체적인 흐름 파악
+- **개별 카드 해석**: 과거/현재/미래 각각의 의미
+- **실천 가능한 조언**: 구체적이고 실용적인 조언 제공
 
 ## 🚀 빠른 시작
 
 ### 사전 요구사항
 - Node.js 18.0 이상
 - npm 또는 yarn
-- Hugging Face API 토큰 (무료)
+- Google AI API 키 (무료)
 
 ### 설치 방법
 
@@ -54,16 +54,16 @@ npm install
 
 3. **환경 변수 설정**
 
-`.env.local` 파일을 생성하고 Hugging Face API 토큰을 추가하세요:
+`.env.local` 파일을 생성하고 Google AI API 키를 추가하세요:
 
 ```bash
-HUGGINGFACE_API_TOKEN=your_token_here
+GOOGLE_AI_API_KEY=your_google_ai_api_key_here
 ```
 
-💡 **Hugging Face API 토큰 받는 방법**:
-1. [Hugging Face](https://huggingface.co/) 가입
-2. Settings → Access Tokens
-3. New Token 생성 (Read 권한만 필요)
+💡 **Google AI API 키 받는 방법**:
+1. [Google AI Studio](https://aistudio.google.com/app/apikey) 접속
+2. API 키 생성
+3. 무료 쿼터 제공 (일일 제한 있음)
 
 4. **개발 서버 실행**
 ```bash
@@ -77,23 +77,28 @@ http://localhost:3001
 
 ## 📖 사용 방법
 
-### 카드 뽑기
-1. 첫 화면에서 **"카드 뽑기"** 버튼 클릭
-2. 카드가 뒤집히며 오늘의 타로 카드가 나타남
-3. 기본 해석이 먼저 표시됨
-4. 2-5초 후 AI가 생성한 개인화된 해석으로 업데이트
+### 1. 카테고리 선택
+- 💕 **연애운**: 이성 관계, 연인과의 관계, 새로운 만남
+- 💰 **재물운**: 재물 운세, 금전 수입, 재테크, 투자
+- 💪 **건강운**: 건강 상태, 체력, 정신 건강, 웰빙
+- 💼 **직업운**: 직장 생활, 업무 성과, 승진, 이직
+- 👥 **대인관계운**: 친구 관계, 가족 관계, 동료 관계
+- ✨ **종합운**: 전반적인 운세, 인생의 방향
 
-### 카드 다시 뽑기
-1. 결과 화면 하단의 **"다시 뽑기"** 버튼 클릭
-2. 확인 메시지에서 **"네, 다시 뽑을게요"** 선택
-3. 처음 화면으로 돌아가 새로운 카드 뽑기
+### 2. 카드 뽑기
+- "카드 뽑기" 버튼 클릭
+- 3장의 카드(과거-현재-미래)가 순차적으로 공개
 
-### 로컬스토리지 초기화
-개발자 도구 콘솔(F12)에서:
-```javascript
-localStorage.clear()
-location.reload()
-```
+### 3. AI 해석 확인
+- **종합 메시지**: 선택한 카테고리 관점에서 전체 흐름
+- **과거 카드**: 과거가 현재에 미친 영향
+- **현재 카드**: 현재 상황 분석
+- **미래 카드**: 미래 전망
+- **조언**: 실천 가능한 구체적 조언
+
+### 4. 다시 뽑기
+- 언제든지 "다시 뽑기" 버튼으로 새로운 운세 확인
+- 카테고리 변경 후 다시 뽑기 가능
 
 ## 🏗️ 기술 스택
 
@@ -102,12 +107,12 @@ location.reload()
 - **React 18** - 함수형 컴포넌트, Hooks
 - **TypeScript** - 타입 안정성
 - **Tailwind CSS** - 유틸리티 기반 스타일링
-- **Framer Motion** - 애니메이션
+- **Framer Motion** - 3D 카드 애니메이션
 
 ### AI & Backend
-- **Hugging Face Inference API** - AI 모델 호출
-- **Meta Llama 3.2 3B Instruct** - 텍스트 생성 모델
+- **Google Generative AI** - Gemini 2.0 Flash Experimental
 - **Next.js API Routes** - 서버리스 API
+- **카테고리별 프롬프트 엔지니어링** - 특화된 운세 해석
 
 ### UI Components
 - **Shadcn UI** - 재사용 가능한 컴포넌트
@@ -127,16 +132,18 @@ location.reload()
 │   └── page.tsx                  # 메인 페이지
 ├── components/
 │   ├── tarot/
-│   │   ├── tarot-card.tsx        # 3D 카드 컴포넌트
+│   │   ├── category-selector.tsx # 카테고리 선택
+│   │   ├── card-spread.tsx       # 3카드 스프레드 표시
+│   │   ├── tarot-card.tsx        # 단일 카드 컴포넌트
 │   │   ├── reading-result.tsx    # 해석 결과 표시
 │   │   └── share-button.tsx      # 공유 버튼
 │   └── ui/                       # Shadcn UI 컴포넌트
 ├── lib/
 │   ├── ai/
-│   │   └── huggingface-client.ts # AI 클라이언트
-│   ├── tarot-data.ts             # 타로 카드 데이터
-│   ├── tarot-engine.ts           # 타로 로직
-│   ├── daily-check.ts            # 일일 체크 & 저장
+│   │   └── huggingface-client.ts # Google AI 클라이언트
+│   ├── tarot-data.ts             # 22장 메이저 아르카나 데이터
+│   ├── tarot-engine.ts           # 3카드 스프레드 로직
+│   ├── daily-check.ts            # 저장 & 로드 관리
 │   └── utils.ts                  # 유틸리티 함수
 ├── types/
 │   └── tarot.ts                  # TypeScript 타입 정의
@@ -171,22 +178,24 @@ location.reload()
 
 ## 🎨 주요 화면
 
-### 1. 카드 뽑기 전
-- 신비로운 뒷면 카드 애니메이션
-- 부드러운 부유 효과
-- 별빛 배경
+### 1. 카테고리 선택
+- 6가지 운세 카테고리
+- 아이콘과 그라데이션으로 시각화
+- 선택 시 애니메이션 효과
 
-### 2. 카드 뽑는 중
-- 로딩 스피너
-- "카드를 뽑는 중..." 메시지
+### 2. 3카드 스프레드
+- 과거-현재-미래 카드 배치
+- 순차적 3D 플립 애니메이션
+- 각 카드의 정/역방향 표시
 
-### 3. 결과 화면
-- 3D 플립 애니메이션으로 카드 공개
-- 정/역방향 배지
-- 키워드 태그
-- AI 해석 (로딩 → 완성)
-- 행운의 색상 & 숫자
-- 다시 뽑기 버튼
+### 3. AI 해석 결과
+- 카테고리별 종합 분석
+- 각 카드별 상세 해석 (카드 이미지 포함)
+- 실천 가능한 조언
+
+### 4. 다시 뽑기
+- 보라색 버튼으로 쉽게 접근
+- 카테고리 재선택 가능
 
 ## 🔧 개발 스크립트
 
@@ -206,37 +215,40 @@ npm run lint
 
 ## 🌟 특별한 점
 
-### 1. **AI 개인화**
-일반적인 고정된 타로 해석이 아닌, AI가 매번 새롭게 작성하는 개인화된 메시지를 받을 수 있습니다.
+### 1. **카테고리별 AI 특화**
+일반적인 타로 해석이 아닌, 선택한 카테고리(연애, 재물 등)에만 집중된 AI 분석
 
-### 2. **부드러운 UX**
-- 카드는 즉시 표시되어 사용자를 기다리게 하지 않음
-- AI 해석은 백그라운드에서 생성되어 자연스럽게 업데이트
-- 에러가 발생해도 기본 해석으로 서비스 지속
+### 2. **3카드 스프레드**
+단일 카드가 아닌 과거-현재-미래의 흐름을 파악하는 전문적인 리딩
 
-### 3. **아름다운 디자인**
-- Tailwind CSS로 세밀하게 조정된 그라데이션
-- Framer Motion의 부드러운 애니메이션
-- 별빛과 보라색 테마로 신비로운 분위기
+### 3. **Google Gemini 2.0 Flash**
+- 최신 AI 모델 사용
+- 빠른 응답 속도
+- 자연스러운 한국어 해석
 
-### 4. **TypeScript 완전 지원**
+### 4. **부드러운 UX**
+- 카드 즉시 표시
+- AI 해석은 백그라운드 생성
+- 에러 시 기본 해석으로 폴백
+
+### 5. **완전한 TypeScript**
 모든 코드가 TypeScript로 작성되어 타입 안정성 보장
 
 ## 📱 반응형 지원
 
-- **모바일 (< 768px)**: 세로 레이아웃, 최적화된 카드 크기
+- **모바일 (< 768px)**: 세로 레이아웃, 카드 세로 배치
 - **태블릿 (768px - 1024px)**: 2단 그리드
-- **데스크톱 (> 1024px)**: 카드와 해석 나란히 표시
+- **데스크톱 (> 1024px)**: 3단 가로 배치
 
 ## 🔐 보안
 
-- API 토큰은 서버사이드에서만 사용
+- API 키는 서버사이드에서만 사용
 - `.env.local`은 Git에서 자동 제외
 - 클라이언트에 민감한 정보 노출 없음
 
 ## 🐛 문제 해결
 
-### 카드 버튼이 안 눌려요
+### 카드 뽑기 버튼이 안 눌려요
 ```javascript
 // 콘솔(F12)에서 실행
 localStorage.clear()
@@ -244,9 +256,9 @@ location.reload()
 ```
 
 ### AI 해석이 생성되지 않아요
-1. `.env.local` 파일에 API 토큰이 올바른지 확인
+1. `.env.local` 파일에 API 키가 올바른지 확인
 2. 서버를 재시작 (`Ctrl+C` 후 `npm run dev`)
-3. Hugging Face API 크레딧 확인
+3. Google AI API 크레딧 확인
 
 ### 포트 3001이 이미 사용 중이에요
 ```bash
@@ -256,19 +268,20 @@ npm run dev -- -p 3002
 
 ## 📝 개발 일지
 
-- **2025-10-03**: 초기 프로젝트 생성
-- 22장 메이저 아르카나 데이터 구축
-- 3D 카드 플립 애니메이션 구현
-- Hugging Face AI 통합
-- 다시 뽑기 기능 추가
+- **2025-10-04**: 프로젝트 대규모 개편
+  - Google Gemini AI 통합
+  - 3카드 스프레드 시스템 구현
+  - 6가지 카테고리별 특화 해석
+  - 무제한 다시 뽑기 기능
+  - UI/UX 대폭 개선
 
 ## 🎯 향후 계획
 
 - [ ] 마이너 아르카나 56장 추가
-- [ ] 3카드 스프레드 (과거-현재-미래)
+- [ ] 켈틱 크로스 스프레드 (10카드)
 - [ ] 사용자 질문 입력 기능
 - [ ] 해석 히스토리 저장
-- [ ] 소셜 공유 기능 강화
+- [ ] 카카오톡 공유 기능
 - [ ] 다국어 지원 (영어, 일본어)
 - [ ] PWA 지원
 
@@ -284,7 +297,7 @@ MIT License
 ## 🙏 감사의 말
 
 - [Next.js](https://nextjs.org/) - 강력한 React 프레임워크
-- [Hugging Face](https://huggingface.co/) - 무료 AI API 제공
+- [Google AI](https://ai.google.dev/) - 무료 Gemini API 제공
 - [Shadcn UI](https://ui.shadcn.com/) - 아름다운 컴포넌트 라이브러리
 - [Framer Motion](https://www.framer.com/motion/) - 부드러운 애니메이션
 
@@ -292,7 +305,7 @@ MIT License
 
 <div align="center">
 
-**🔮 매일 새로운 타로 운세로 하루를 시작하세요! ✨**
+**🔮 AI가 해석하는 타로 운세로 당신의 미래를 확인하세요! ✨**
 
 Made with 💜 by 1Day-1Service
 

@@ -1,5 +1,7 @@
 export type CardOrientation = 'upright' | 'reversed';
 
+export type ReadingCategory = 'love' | 'money' | 'health' | 'career' | 'relationship' | 'general';
+
 export interface TarotCard {
   id: number;
   name: string;
@@ -22,13 +24,25 @@ export interface TarotCard {
   luckyNumber: number;
 }
 
-export interface DailyReading {
-  date: string; // YYYY-MM-DD
+export interface CardInSpread {
   card: TarotCard;
   orientation: CardOrientation;
+  position: string; // "과거", "현재", "미래" 등
+}
+
+export interface DailyReading {
+  date: string; // YYYY-MM-DD
+  category: ReadingCategory;
+  cards: CardInSpread[]; // 여러 카드
   timestamp: number;
   aiReading?: {
-    message: string;
+    category: ReadingCategory;
+    categoryName: string;
+    overallMessage: string;
+    cardInterpretations: {
+      position: string;
+      message: string;
+    }[];
     advice: string;
   };
 }
