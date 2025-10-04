@@ -31,7 +31,7 @@ export async function generateTarotReading(prompt: TarotAIPrompt): Promise<strin
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash-exp' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
     const systemPrompt = `당신은 30년 경력의 전문 타로 리더입니다. 
 깊이 있고 통찰력 있는 타로 카드 해석을 제공하며, 심리학적 관점과 영적 지혜를 결합합니다.
