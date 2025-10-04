@@ -13,40 +13,43 @@ export interface TarotAIPrompt {
 
 export async function generateTarotReading(prompt: TarotAIPrompt): Promise<string> {
   try {
-    const systemPrompt = `당신은 30년 경력의 전문 타로 리더입니다. 
-깊이 있고 통찰력 있는 타로 카드 해석을 제공하며, 심리학적 관점과 영적 지혜를 결합합니다.
-답변은 친근하면서도 신비로운 톤으로, 한국어로 작성합니다.`;
+    if (!process.env.HUGGINGFACE_API_TOKEN) {
+      throw new Error('HUGGINGFACE_API_TOKEN이 설정되지 않았습니다.');
+    }
+
+    const systemPrompt = `You are a professional tarot reader with 30 years of experience. Provide insightful tarot card interpretations combining psychological perspectives and spiritual wisdom. Write in Korean with a friendly yet mystical tone.`;
 
     const userPrompt = `
-타로 카드: ${prompt.cardName} (${prompt.cardNameEn})
-방향: ${prompt.orientation === 'upright' ? '정방향' : '역방향'}
-키워드: ${prompt.keywords.join(', ')}
+Tarot Card: ${prompt.cardName} (${prompt.cardNameEn})
+Orientation: ${prompt.orientation === 'upright' ? 'Upright (정방향)' : 'Reversed (역방향)'}
+Keywords: ${prompt.keywords.join(', ')}
 
-이 카드에 대한 오늘의 타로 해석을 다음 형식으로 작성해주세요:
+Please write today's tarot interpretation in the following format in Korean:
 
 **오늘의 메시지**
-(2-3문장으로 카드의 핵심 의미와 오늘의 에너지를 설명)
+(2-3 sentences explaining the core meaning of the card and today's energy)
 
 **조언**
-(2-3문장으로 실용적이고 구체적인 조언 제공)
+(2-3 sentences providing practical and specific advice)
 
-따뜻하고 희망적인 톤으로, 사용자가 하루를 긍정적으로 시작할 수 있도록 작성해주세요.`;
+Write in a warm and hopeful tone so that the user can start their day positively.`;
 
     const response = await hf.textGeneration({
-      model: 'meta-llama/Llama-3.2-3B-Instruct',
-      inputs: `${systemPrompt}\n\n${userPrompt}`,
+      model: 'mistralai/Mistral-7B-Instruct-v0.2',
+      inputs: `<s>[INST] ${systemPrompt}\n\n${userPrompt} [/INST]`,
       parameters: {
-        max_new_tokens: 500,
-        temperature: 0.8,
-        top_p: 0.9,
-        repetition_penalty: 1.2,
+        max_new_tokens: 400,
+        temperature: 0.7,
+        top_p: 0.95,
+        repetition_penalty: 1.1,
+        return_full_text: false,
       },
     });
 
     return response.generated_text.trim();
   } catch (error) {
     console.error('AI 타로 해석 생성 실패:', error);
-    throw new Error('AI 타로 해석을 생성할 수 없습니다.');
+    throw error;
   }
 }
 

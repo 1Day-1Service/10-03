@@ -55,9 +55,9 @@ export default function Home() {
         setIsFlipped(true);
       }, 500);
 
-      // AI 타로 해석 생성
+      // AI 타로 해석 생성 (선택적)
       setTimeout(async () => {
-        console.log('🤖 AI 타로 해석 생성 중...');
+        console.log('🤖 AI 타로 해석 생성 시도 중...');
         setIsGeneratingAI(true);
         
         try {
@@ -77,10 +77,18 @@ export default function Home() {
           });
 
           if (!response.ok) {
-            throw new Error('AI 해석 생성 실패');
+            const errorData = await response.json();
+            console.warn('⚠️ AI 해석 생성 실패:', errorData);
+            throw new Error(errorData.details || 'AI 해석 생성 실패');
           }
 
           const aiReading = await response.json();
+          
+          // 에러 응답인지 확인
+          if (aiReading.error) {
+            throw new Error(aiReading.error);
+          }
+          
           console.log('✨ AI 해석 생성 완료:', aiReading);
           
           const updatedReading = {
@@ -92,7 +100,10 @@ export default function Home() {
           saveTodayReading(updatedReading);
         } catch (error) {
           console.error('❌ AI 해석 생성 오류:', error);
-          setAiError('AI 해석을 생성하는 중 문제가 발생했습니다. 기본 해석을 표시합니다.');
+          console.log('📝 기본 해석을 사용합니다.');
+          setAiError('AI 해석을 생성할 수 없어 기본 해석을 표시합니다.');
+          // 기본 해석으로 계속 진행
+          saveTodayReading(newReading);
         } finally {
           setIsGeneratingAI(false);
         }
